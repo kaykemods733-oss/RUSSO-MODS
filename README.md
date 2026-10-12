@@ -1,17 +1,13 @@
 # RUSSO-MODS
 
+## PH iOS UI Demo — projeto seguro
 
+Este repositório contém somente uma demo SwiftUI de interface. Não inclui o fonte explorável nem o workflow original.
 
-## PH iOS UI Demo (safe)
+O pacote-fonte mais recente é **PH-IPA-UI-demo-safe-v2.zip**. Ele inclui o projeto XcodeGen e a documentação atual de validação da API em **API_INTEGRATION.md**. O arquivo PH-IPA-UI-demo-safe.zip é a versão anterior; use o v2.
 
+A demo atual não chama a API. O guia documenta o contrato de validação, mas deixa claro que o Bundle ID desta demo não é o cliente autorizado pelo backend. Nenhuma lista permitida do servidor foi alterada.
 
+O workflow .github/workflows/build-demo-ipa.yml é manual-only e produz uma IPA sem assinatura como artifact, retido por sete dias. Ele não publica Releases. A documentação acompanha o projeto-fonte; ela não é incorporada ao binário IPA.
 
-This repository includes only a minimal SwiftUI UI demonstration. It does **not** contain the supplied exploit source or the original IPA workflow.
-
-
-
-The demo has no kernel exploit, sandbox escape, privilege escalation, jailbreak-detection bypass, or remote source-code downloads. Its GitHub Actions workflow is manual-only, read-only, and produces an unsigned IPA artifact retained for seven days; it does not publish Releases.
-
-
-
-See `PH-IPA-UI-demo-safe.zip` for the XcodeGen project and `.github/workflows/build-demo-ipa.yml` for the workflow. The artifact can be requested from the Actions tab using **Run workflow**.
+Para compilar, abra a aba Actions, selecione **Build safe UI demo IPA** e use **Run workflow**.
