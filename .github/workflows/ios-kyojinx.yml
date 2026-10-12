@@ -1392,9 +1392,9 @@ jobs:
           import base64, sys
           app = Path(sys.argv[1])
           urls = {
-              'https://api-key-external.up.railway.app/api/announcement': 'aHR0cHM6Ly9hcGktcHJvZHVjdGlvbi0xODJjLnVwLnJhaWx3YXkuYXBwL2FwaS9hbm5vdW5jZW1lbnQ=',
-              'https://api-key-external.up.railway.app/api/patches/catalog': 'aHR0cHM6Ly9hcGktcHJvZHVjdGlvbi0xODJjLnVwLnJhaWx3YXkuYXBwL2FwaS9wYXRjaGVzL2NhdGFsb2c=',
-              'https://api-key-external.up.railway.app/api/patches/external/catalog': 'aHR0cHM6Ly9hcGktcHJvZHVjdGlvbi0xODJjLnVwLnJhaWx3YXkuYXBwL2FwaS9wYXRjaGVzL2V4dGVybmFsL2NhdGFsb2c='
+              'https://api-key-external.up.railway.app/api/announcement': 'aHR0cHM6Ly9waC1hcGktcHJvZHVjdGlvbi51cC5yYWlsd2F5LmFwcC9hcGkvYW5ub3VuY2VtZW50',
+              'https://api-key-external.up.railway.app/api/patches/catalog': 'aHR0cHM6Ly9waC1hcGktcHJvZHVjdGlvbi51cC5yYWlsd2F5LmFwcC9hcGkvcGF0Y2hlcy9jYXRhbG9n',
+              'https://api-key-external.up.railway.app/api/patches/external/catalog': 'aHR0cHM6Ly9waC1hcGktcHJvZHVjdGlvbi51cC5yYWlsd2F5LmFwcC9hcGkvcGF0Y2hlcy9leHRlcm5hbC9jYXRhbG9n'
           }
           for path in app.rglob('*.swift'):
               text = path.read_text()
@@ -1437,10 +1437,10 @@ jobs:
           enum PHEncryptedString {
               private static let key = SymmetricKey(data: Data([123, 166, 243, 253, 235, 163, 70, 1, 158, 192, 113, 214, 181, 204, 157, 64, 199, 174, 67, 177, 13, 146, 152, 201, 171, 190, 42, 231, 189, 209, 152, 166]))
               private static let boxes: [String: (String, String, String)] = [
-          "validation": ("f292770246e461d534ea1743", "61e12bea28dee3ad6fbe5f0b3337371bd1d7af451a5a680e6ad605067b6b0a2fe562addeb59500ac1ce2325d69095fe1b274e8aee626f2bf44b13e3b85df22", "53881e76cff3c4753341b61cf5b9f436"),
-          "catalog": ("12a81b68db56d6d7e030b89c", "42454a3a006bd0e17efa2fd17f9e6ba6be0b9010fd12a0e36fa580ef0415bc9243ee797a4d6df9391d6f5718890be3fd268c9340ffcbb26938a18b6127b4", "6f4f876741c83dfe85521f84f836730a"),
-          "external": ("4c575ae007691f138754c283", "819362253f35961af114ad2fba0a474fe2fa68f4bbc6a312bc556b39f353314a3b674d937a056ac6b9b305a0769de97a60dc7c16e54239b30f620660510b3b5f786b405fb35be4", "27304150d6079988023017bfad0d39ac"),
-          "announcement": ("62d59c7c01e666416aa1e9fe", "d1cc5dbbcd1014c5c474657c25e906a87c194cdf6d1cb0d80c9fa8c556de873d1145bc5caba7766b5238e255af1a4990301fabe2af7d5b3d24dc34", "2b60be9b64a16181766a1254a5b06405"),
+          "validation": ("0725b6b533ed93bb9d729ad1", "1888e630428471d8c376bb93a26e0b71458be96768f421575182d8e178213069efabf5cfdd6cfd7474584c2c011ca3b9d608c1152d582ca9a8b3ae22b5", "aade1f343ed55443c6cfea9f7435e2de"),
+          "catalog": ("7f604ae941bd61ecb5098f66", "3e09bf85ab3c72b58fbefe1f6cb751ea685987d3ba6929e1792073406894667ffcfd5951d76180757597696690d5de1a05e0eadf51d9ce7fb00e148b", "41a1d52b6e5c24bb5ef2eb580a67f9b7"),
+          "external": ("9202d6439a2625dd6bea6547", "eded2ee8a9dd3f0aa5e5a7c4deb877d79766f4246f5c0c9423443f46b45a392367d473cf35b96a10dd906dd4cbbf6cad9f53e076640b9a109df53a5961f0f02f5cce1bd75d", "a708607ee54523993fd6b721f8759252"),
+          "announcement": ("9fc913bb7d598223bb3a54d1", "c8a864c49680adf287982b7275844ac3645f6a965522ef52bf01c09386edb25c71c4a97a37954230c5932bf9e6b1c84a35613d800342113ab2", "c987d52455e6643104729be6d99a2686"),
           "token": ("57b0336a1fe55aa429ecaa7a", "68ef42dedda4e5a5697e857f3d50bb035a589eafac46432162d9037054150d93e343d8e28e67130bc3d3c0b96b96", "179cac8e8792329e008d88297285a32d"),
               ]
               static func decrypt(_ name: String) -> String {
@@ -1478,6 +1478,10 @@ jobs:
               "https://api-key-external.up.railway.app/api/patches/catalog": 'PHEncryptedString.decrypt("catalog")',
               "https://api-key-external.up.railway.app/api/patches/external/catalog": 'PHEncryptedString.decrypt("external")',
               "https://api-key-external.up.railway.app/api/announcement": 'PHEncryptedString.decrypt("announcement")',
+              "https://ph-api-production.up.railway.app/api/license/validate": 'PHEncryptedString.decrypt("validation")',
+              "https://ph-api-production.up.railway.app/api/patches/catalog": 'PHEncryptedString.decrypt("catalog")',
+              "https://ph-api-production.up.railway.app/api/patches/external/catalog": 'PHEncryptedString.decrypt("external")',
+              "https://ph-api-production.up.railway.app/api/announcement": 'PHEncryptedString.decrypt("announcement")',
               "https://api-production-182c.up.railway.app/api/license/validate": 'PHEncryptedString.decrypt("validation")',
               "https://api-production-182c.up.railway.app/api/patches/catalog": 'PHEncryptedString.decrypt("catalog")',
               "https://api-production-182c.up.railway.app/api/patches/external/catalog": 'PHEncryptedString.decrypt("external")',
@@ -1488,6 +1492,9 @@ jobs:
               'String(data: Data(base64Encoded: "aHR0cHM6Ly9hcGktcHJvZHVjdGlvbi0xODJjLnVwLnJhaWx3YXkuYXBwL2FwaS9wYXRjaGVzL2NhdGFsb2c=")!, encoding: .utf8)!': 'PHEncryptedString.decrypt("catalog")',
               'String(data: Data(base64Encoded: "aHR0cHM6Ly9hcGktcHJvZHVjdGlvbi0xODJjLnVwLnJhaWx3YXkuYXBwL2FwaS9wYXRjaGVzL2V4dGVybmFsL2NhdGFsb2c=")!, encoding: .utf8)!': 'PHEncryptedString.decrypt("external")',
               'String(data: Data(base64Encoded: "aHR0cHM6Ly9hcGktcHJvZHVjdGlvbi0xODJjLnVwLnJhaWx3YXkuYXBwL2FwaS9hbm5vdW5jZW1lbnQ=")!, encoding: .utf8)!': 'PHEncryptedString.decrypt("announcement")',
+              'String(data: Data(base64Encoded: "aHR0cHM6Ly9waC1hcGktcHJvZHVjdGlvbi51cC5yYWlsd2F5LmFwcC9hcGkvcGF0Y2hlcy9jYXRhbG9n")!, encoding: .utf8)!': 'PHEncryptedString.decrypt("catalog")',
+              'String(data: Data(base64Encoded: "aHR0cHM6Ly9waC1hcGktcHJvZHVjdGlvbi51cC5yYWlsd2F5LmFwcC9hcGkvcGF0Y2hlcy9leHRlcm5hbC9jYXRhbG9n")!, encoding: .utf8)!': 'PHEncryptedString.decrypt("external")',
+              'String(data: Data(base64Encoded: "aHR0cHM6Ly9waC1hcGktcHJvZHVjdGlvbi51cC5yYWlsd2F5LmFwcC9hcGkvYW5ub3VuY2VtZW50")!, encoding: .utf8)!': 'PHEncryptedString.decrypt("announcement")',
           }
           for path in app.rglob("*.swift"):
               text = path.read_text()
@@ -1498,7 +1505,7 @@ jobs:
                   text = text.replace(raw, replacement)
               path.write_text(text)
           PY2
-          if grep -R -nE 'api-production-182c|license/validate|patches/catalog|external/catalog|cGhfY1BQSF' "$APP_DIR" --include='*.swift'; then
+          if grep -R -nE 'api-production-182c|api-key-external|ph-api-production\.up\.railway\.app|license/validate|patches/catalog|external/catalog|cGhfY1BQSF' "$APP_DIR" --include='*.swift'; then
             echo "Sensitive API literal remained after encryption" >&2
             exit 1
           fi
