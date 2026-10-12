@@ -1,10 +1,13 @@
 name: Build safe UI demo IPA
 
+
 on:
   workflow_dispatch:
 
+
 permissions:
   contents: read
+
 
 jobs:
   build:
@@ -16,7 +19,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p demo-source
-          unzip -q PH-IPA-UI-demo-safe.zip -d demo-source
+          unzip -q PH-IPA-UI-demo-safe-v2.zip -d demo-source
           test -d demo-source/App
           test -f demo-source/project.yml
           cp demo-source/project.yml .
@@ -41,3 +44,4 @@ jobs:
           path: dist/PHIPADemo-unsigned.ipa
           if-no-files-found: error
           retention-days: 7
+
